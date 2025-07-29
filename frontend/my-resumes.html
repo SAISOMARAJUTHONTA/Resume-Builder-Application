@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Resumes - Resumate</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+    <div class="flex flex-col min-h-screen">
+        <!-- Header Section -->
+        <header class="bg-white shadow-md sticky top-0 z-50">
+            <div class="container mx-auto px-6 py-4">
+                <div class="flex items-center justify-between">
+                    <div class="text-2xl font-bold text-gray-800">
+                        <a href="dashboard.html">Resu<span class="text-indigo-600">mate</span></a>
+                    </div>
+                    <nav class="hidden md:flex items-center space-x-8">
+                        <a href="dashboard.html" class="text-gray-600 hover:text-indigo-600 transition duration-300">Home</a>
+                        <a href="my-resumes.html" class="text-indigo-600 font-semibold">My resumes</a>
+                        <a href="dashboard.html#templates" class="text-gray-600 hover:text-indigo-600 transition duration-300">Templates</a>
+                        <a href="profile.html" class="text-gray-600 hover:text-indigo-600 transition duration-300">User Profile</a>
+                        <button id="logout-button" class="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600 transition duration-300 shadow-sm">
+                            Logout
+                        </button>
+                    </nav>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content Area -->
+        <main class="flex-grow container mx-auto px-6 py-12">
+            <div class="max-w-4xl mx-auto">
+                <h1 class="text-3xl font-bold mb-8 text-gray-800">Your Saved Resumes</h1>
+                
+                <!-- Container for the list of resumes -->
+                <div id="resumes-list-container" class="space-y-4">
+                    <!-- Resumes will be dynamically inserted here -->
+                </div>
+
+                <!-- Message to show when no resumes are found -->
+                <div id="no-resumes-message" class="hidden text-center bg-white p-12 rounded-lg shadow">
+                    <p class="text-gray-500 text-lg">You haven't saved any resumes yet.</p>
+                    <a href="dashboard.html" class="mt-4 inline-block bg-indigo-600 text-white px-6 py-3 rounded-md hover:bg-indigo-700 transition duration-300 shadow-sm font-semibold">
+                        Create a New Resume
+                    </a>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="./js/my-resumes.js"></script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Creative Resume Template</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        .chic-body {
+            font-family: 'Montserrat', sans-serif;
+            color: #333;
+        }
+        .chic-container {
+            display: flex;
+            background-color: white;
+        }
+        .chic-main {
+            width: 60%;
+            padding: 3rem;
+            background-color: #FFF9F7; /* Very light pink */
+        }
+        .chic-sidebar {
+            width: 40%;
+            padding: 3rem;
+        }
+        .chic-header {
+            color: #D68C7C; /* Muted pink */
+            font-family: 'Lora', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+        .chic-title {
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+        }
+        .chic-section-title {
+            color: #D68C7C;
+            font-family: 'Lora', serif;
+            font-weight: 700;
+            font-size: 1.25rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #F1E4E0;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body class="chic-body">
+    <div class="chic-container">
+        <!-- Main Content (Left) -->
+        <div class="chic-main">
+            <section class="mb-8">
+                <h2 class="chic-section-title">Experiences</h2>
+                <div class="space-y-6">
+                    {{EXPERIENCE_LOOP}}
+                </div>
+            </section>
+            <section class="mb-8">
+                <h2 class="chic-section-title">Educations</h2>
+                <div class="space-y-4">
+                     <div>
+                        <p class="font-bold">{{COLLEGE}}</p>
+                        <p class="text-sm">{{DEGREE}} | {{PASSING_YEAR}}</p>
+                    </div>
+                </div>
+            </section>
+            <section>
+                <h2 class="chic-section-title">Contact</h2>
+                <div class="text-sm space-y-2">
+                    <p>{{PHONE}}</p>
+                    <p>{{EMAIL}}</p>
+                </div>
+            </section>
+        </div>
+
+        <!-- Sidebar (Right) -->
+        <div class="chic-sidebar">
+            <div class="w-full h-64 mb-6">
+                <img src="{{PROFILE_IMAGE}}" alt="Profile Picture" class="w-full h-full object-cover">
+            </div>
+            <h1 class="chic-header">{{FULL_NAME}}</h1>
+            <p class="chic-title mt-1">Digital Marketer</p>
+            <hr class="border-t-2 border-gray-200 my-6">
+
+            <section class="mb-8">
+                <h2 class="chic-section-title">My Profile</h2>
+                <p class="text-sm leading-relaxed">
+                    An efficient and Professional Digital Marketer with four years of experience working in a fast-growing Startup. I'm a specialist in handling and managing day-to-day team operations with considerable experience to read trends.
+                </p>
+            </section>
+            <section>
+                <h2 class="chic-section-title">Skills & Expertise</h2>
+                <div class="text-sm space-y-2">
+                    {{SKILLS_LOOP}}
+                </div>
+            </section>
+        </div>
+    </div>
+</body>
+</html>

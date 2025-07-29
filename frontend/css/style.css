@@ -1,0 +1,19 @@
+/* File: style.css
+  Description: Custom global styles to complement Tailwind CSS.
+*/
+
+/* Set the base font for the entire application to 'Inter' */
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+/* Creates a gradient text effect.
+  The background is clipped to the text, making the text appear as a gradient.
+*/
+.gradient-text {
+    background: linear-gradient(to right, #4F46E5, #818CF8);
+    -webkit-background-clip: text; /* For Safari/Chrome */
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-emphasis-color: transparent;
+}

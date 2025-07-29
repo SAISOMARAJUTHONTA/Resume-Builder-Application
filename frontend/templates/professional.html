@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Professional Resume Template</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .resume-pro-body {
+            font-family: 'Inter', sans-serif;
+            background-color: white;
+        }
+        .pro-header {
+            background-color: #4a5568; /* gray-700 */
+            color: white;
+            padding: 2.5rem;
+            text-align: center;
+        }
+        .pro-header-img-container {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 1rem;
+            background-color: #e2e8f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: bold;
+            color: #4a5568;
+        }
+        .pro-content-container {
+            display: flex;
+        }
+        .pro-main-content {
+            width: 65%;
+            padding: 2.5rem;
+        }
+        .pro-sidebar {
+            width: 35%;
+            background-color: #f7fafc; /* gray-100 */
+            padding: 2.5rem;
+        }
+        .pro-section-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #4a5568;
+            border-bottom: 2px solid #4a5568;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .work-item ul {
+            list-style-position: inside;
+            padding-left: 0;
+        }
+    </style>
+</head>
+<body class="resume-pro-body">
+    
+    <!-- Full-width Header -->
+    <div class="pro-header">
+        <div class="pro-header-img-container">
+            <img src="{{PROFILE_IMAGE}}" alt="Profile" class="w-full h-full object-cover">
+        </div>
+        <h1 class="text-5xl font-bold tracking-wider">{{FULL_NAME}}</h1>
+    </div>
+
+    <!-- Two-column Content Area -->
+    <div class="pro-content-container">
+        <!-- Main Content (Left) -->
+        <div class="pro-main-content">
+            <div class="mb-8">
+                <h2 class="pro-section-title">Professional Summary</h2>
+                <p class="text-gray-700">
+                    Seasoned and adept professional with a proven track record. Experienced leader and program manager with 5-year history in field. Clear communicator, decision maker, and problem solver.
+                </p>
+            </div>
+
+            <div>
+                <h2 class="pro-section-title">Work History</h2>
+                <div class="space-y-6">
+                    <!-- Experience items will be inserted here -->
+                    {{EXPERIENCE_LOOP}}
+                </div>
+            </div>
+        </div>
+
+        <!-- Sidebar (Right) -->
+        <div class="pro-sidebar">
+            <div class="mb-8">
+                <p class="mb-2"><strong>Email:</strong><br>{{EMAIL}}</p>
+                <p><strong>Phone:</strong><br>{{PHONE}}</p>
+            </div>
+
+            <div class="mb-8">
+                <h2 class="pro-section-title">Skills</h2>
+                <ul class="list-disc list-inside text-gray-700 space-y-1">
+                    <!-- Skills will be inserted here -->
+                    {{SKILLS_LOOP}}
+                </ul>
+            </div>
+
+            <div>
+                <h2 class="pro-section-title">Education</h2>
+                <p class="font-bold">{{DEGREE}}</p>
+                <p>{{COLLEGE}}</p>
+                <p class="text-sm text-gray-600">{{PASSING_YEAR}}</p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

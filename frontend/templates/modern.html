@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Modern Resume Template</title>
+    <!-- We need Tailwind CSS for the styling of this template -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* A little extra style to match the two-column layout */
+        .resume-container {
+            display: flex;
+            font-family: 'Inter', sans-serif; /* Assuming Inter font */
+        }
+        .left-column {
+            width: 33.33%;
+            background-color: #2d3748; /* gray-800 */
+            color: #f7fafc; /* gray-100 */
+            padding: 2rem;
+        }
+        .right-column {
+            width: 66.67%;
+            padding: 2rem;
+        }
+        .section-title {
+            border-bottom: 2px solid #cbd5e0; /* gray-400 */
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+        .left-section-title {
+            color: #a0aec0; /* gray-500 */
+        }
+    </style>
+</head>
+<body>
+    <div class="resume-container">
+        <!-- Left Column -->
+        <div class="left-column">
+            <div class="text-center mb-8">
+                <!-- UPDATED: Image will be inserted here -->
+                <img src="{{PROFILE_IMAGE}}" alt="Profile Picture" class="w-32 h-32 rounded-full object-cover mx-auto mb-4">
+            </div>
+
+            <div class="mb-8">
+                <h2 class="section-title left-section-title">Contact</h2>
+                <p class="text-sm mb-2"><strong>Phone:</strong> {{PHONE}}</p>
+                <p class="text-sm"><strong>Email:</strong> {{EMAIL}}</p>
+            </div>
+
+            <div class="mb-8">
+                <h2 class="section-title left-section-title">Education</h2>
+                <p class="font-bold">{{DEGREE}}</p>
+                <p class="text-sm">{{COLLEGE}}</p>
+                <p class="text-sm text-gray-400">{{PASSING_YEAR}}</p>
+            </div>
+        </div>
+
+        <!-- Right Column -->
+        <div class="right-column">
+            <div class="mb-8 text-center">
+                <h1 class="text-5xl font-bold text-gray-800">{{FULL_NAME}}</h1>
+                <p class="text-xl text-gray-600 mt-2">FullStack Developer</p> <!-- Example Title -->
+            </div>
+
+            <div class="mb-8">
+                <h2 class="section-title">Profile</h2>
+                <p class="text-gray-700">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.
+                </p>
+            </div>
+
+            <div class="mb-8">
+                <h2 class="section-title">Work Experience</h2>
+                <!-- Experience items will be inserted here -->
+                {{EXPERIENCE_LOOP}}
+            </div>
+
+            <div class="mb-8">
+                <h2 class="section-title">Projects</h2>
+                <!-- Projects will be inserted here -->
+                {{PROJECTS_LOOP}}
+            </div>
+
+            <div>
+                <h2 class="section-title">Skills</h2>
+                <div class="grid grid-cols-2 gap-4 mt-4 text-gray-700">
+                    <!-- Skills will be inserted here -->
+                    {{SKILLS_LOOP}}
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

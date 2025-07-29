@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile - Resumate</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+    <div class="flex flex-col min-h-screen">
+        <!-- Header Section (Same as Dashboard) -->
+        <header class="bg-white shadow-md sticky top-0 z-50">
+            <div class="container mx-auto px-6 py-4">
+                <div class="flex items-center justify-between">
+                    <div class="text-2xl font-bold text-gray-800">
+                        <a href="dashboard.html">Resu<span class="text-indigo-600">mate</span></a>
+                    </div>
+                    <nav class="hidden md:flex items-center space-x-8">
+                        <a href="dashboard.html" class="text-gray-600 hover:text-indigo-600 transition duration-300">Home</a>
+                        <a href="my-resumes.html" class="text-gray-600 hover:text-indigo-600 transition duration-300">My resumes</a>
+                        <a href="dashboard.html#templates" class="text-gray-600 hover:text-indigo-600 transition duration-300">Templates</a>
+                        <a href="profile.html" class="text-indigo-600 font-semibold">User Profile</a>
+                        <button id="logout-button" class="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600 transition duration-300 shadow-sm">
+                            Logout
+                        </button>
+                    </nav>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content Area -->
+        <main class="flex-grow container mx-auto px-6 py-12">
+            <div class="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-lg">
+                <h1 class="text-3xl font-bold mb-6 text-gray-800">Your Profile</h1>
+                
+                <form id="profile-form" novalidate>
+                    <!-- Message container for feedback -->
+                    <div id="message-container" class="text-center text-sm mb-6 min-h-[20px]"></div>
+                    <div class="space-y-6">
+                        <div>
+                            <label for="full-name" class="block text-sm font-medium text-gray-700">Full Name</label>
+                            <input type="text" id="full-name" name="fullname" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                        </div>
+                        <div>
+                            <label for="email-address" class="block text-sm font-medium text-gray-700">Email Address</label>
+                            <input type="email" id="email-address" name="email" readonly class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm bg-gray-100 text-gray-500 cursor-not-allowed sm:text-sm">
+                        </div>
+                        <div class="border-t border-gray-200"></div>
+                        <h2 class="text-xl font-semibold text-gray-700">Change Password</h2>
+                        <div>
+                            <label for="new-password" class="block text-sm font-medium text-gray-700">New Password</label>
+                            <input type="password" id="new-password" name="new-password" placeholder="Leave blank to keep current password" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                        </div>
+                    </div>
+                    <div class="mt-8 text-right">
+                        <button type="submit" class="bg-indigo-600 text-white px-6 py-2 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition duration-300">
+                            Save Changes
+                        </button>
+                    </div>
+                </form>
+
+                <!-- Divider -->
+                <div class="border-t border-gray-300 my-10"></div>
+
+                <!-- Resume Details Form -->
+                <h1 class="text-3xl font-bold mb-6 text-gray-800">Resume Details</h1>
+                <form id="resume-details-form">
+                    <div class="space-y-6">
+                        <!-- Profile Image -->
+                        <h3 class="text-xl font-semibold text-gray-700 border-b pb-2">Profile Image</h3>
+                        <div class="flex items-center space-x-6">
+                            <img id="profile-image-preview" src="https://placehold.co/128x128/E2E8F0/4A5568?text=Upload" class="w-32 h-32 rounded-full object-cover bg-gray-200">
+                            <label for="profile-image-upload" class="cursor-pointer bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50">
+                                <span>Upload a file</span>
+                                <input id="profile-image-upload" name="profile_image" type="file" class="sr-only" accept="image/png, image/jpeg">
+                            </label>
+                        </div>
+
+                        <!-- Personal Info -->
+                        <h3 class="text-xl font-semibold text-gray-700 border-b pb-2">Personal Information</h3>
+                        <input type="text" placeholder="Full Name (as on resume)" name="resume_full_name" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+                        <input type="email" placeholder="Contact Email" name="resume_email" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+                        <input type="text" placeholder="Phone Number" name="resume_phone" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+
+                        <!-- Education -->
+                        <h3 class="text-xl font-semibold text-gray-700 border-b pb-2 pt-4">Education</h3>
+                        <input type="text" placeholder="College/School Name" name="education_college" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+                        <input type="text" placeholder="Degree / Standard" name="education_degree" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+                        <input type="text" placeholder="Year of Passing" name="education_year" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+
+                        <!-- Skills -->
+                        <h3 class="text-xl font-semibold text-gray-700 border-b pb-2 pt-4">Skills</h3>
+                        <div id="skills-container" class="space-y-2">
+                            <input type="text" name="skills" placeholder="e.g., JavaScript" class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+                        </div>
+                        <button type="button" id="add-skill-btn" class="text-sm text-indigo-600 hover:text-indigo-800 font-medium">+ Add Skill</button>
+
+                        <!-- Projects -->
+                        <h3 class="text-xl font-semibold text-gray-700 border-b pb-2 pt-4">Projects</h3>
+                        <div id="projects-container" class="space-y-4">
+                            <!-- Project Group 1 -->
+                            <div class="project-group space-y-2 p-4 border rounded-md">
+                                <input type="text" name="project_title" placeholder="Project Title" class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+                                <input type="url" name="project_link" placeholder="Project Link (e.g., https://github.com/user/repo)" class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+                                <textarea name="project_description" placeholder="Project Description" rows="3" class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"></textarea>
+                            </div>
+                        </div>
+                        <button type="button" id="add-project-btn" class="text-sm text-indigo-600 hover:text-indigo-800 font-medium">+ Add Project</button>
+
+                        <!-- Experience -->
+                        <h3 class="text-xl font-semibold text-gray-700 border-b pb-2 pt-4">Experience</h3>
+                        <div id="experience-container" class="space-y-2">
+                            <input type="text" name="experience" placeholder="Company Name - Role - Duration" class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+                        </div>
+                        <button type="button" id="add-experience-btn" class="text-sm text-indigo-600 hover:text-indigo-800 font-medium">+ Add Experience</button>
+                    </div>
+                     <!-- Submit -->
+                    <div class="mt-8 text-right">
+                        <button type="submit" class="bg-indigo-600 text-white px-6 py-2 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition duration-300">
+                            Save Resume Details
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </main>
+    </div>
+    <script src="./js/profile.js"></script>
+    <script src="./js/resume-details.js"></script>
+</body>
+</html>

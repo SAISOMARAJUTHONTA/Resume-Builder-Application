@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Resumate</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+    <div id="app-wrapper" class="flex flex-col min-h-screen">
+        <header class="bg-white shadow-md sticky top-0 z-50">
+            <div class="container mx-auto px-6 py-4">
+                <div class="flex items-center justify-between">
+                    <div class="text-2xl font-bold text-gray-800">
+                        <a href="dashboard.html">Resu<span class="text-indigo-600">mate</span></a>
+                    </div>
+                    <nav class="hidden md:flex items-center space-x-8">
+                        <a href="dashboard.html" class="text-gray-600 hover:text-indigo-600 transition duration-300">Home</a>
+                        <a href="my-resumes.html" class="text-gray-600 hover:text-indigo-600 transition duration-300">My resumes</a>
+                        <a href="#templates" class="text-gray-600 hover:text-indigo-600 transition duration-300">Templates</a>
+                        <a href="profile.html" class="text-gray-600 hover:text-indigo-600 transition duration-300">User Profile</a>
+                        <button id="logout-button" class="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600 transition duration-300 shadow-sm">
+                            Logout
+                        </button>
+                    </nav>
+                </div>
+            </div>
+        </header>
+
+        <main class="flex-grow container mx-auto px-6 py-12">
+            <div class="text-center">
+                <h1 id="welcome-message" class="text-4xl md:text-5xl font-extrabold mb-4">
+                    Welcome, <span class="gradient-text">User</span>!
+                </h1>
+                <p class="text-lg text-gray-600">
+                    This is where you can manage your resumes, explore templates, and build your career.
+                </p>
+            </div>
+            
+            <div class="mt-12 bg-white p-8 rounded-lg shadow-lg">
+                <h2 class="text-2xl font-bold mb-6">Your Resumes</h2>
+                <div class="border-2 border-dashed border-gray-300 rounded-lg p-12 text-center">
+                    <p class="text-gray-500">No resumes found. Let's create your first one!</p>
+                    <button id="create-resume-btn" class="mt-4 bg-indigo-600 text-white px-6 py-3 rounded-md hover:bg-indigo-700 transition duration-300 shadow-sm font-semibold">
+                        Create Your Resume
+                    </button>
+                </div>
+            </div>
+
+            <div id="templates" class="mt-16">
+                <h2 class="text-3xl font-bold mb-8 text-center text-gray-800">Explore Our Templates</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300 group">
+                        <img src="img/modern-template.jpg" alt="Modern Resume Template" class="w-full h-100 object-cover">
+                        <div class="p-6 text-center">
+                            <h3 class="text-xl font-semibold mb-2">Modern Template</h3>
+                            <p class="text-gray-600 mb-4 h-12">A clean and stylish template for the modern professional.</p>
+                            <button data-template-id="modern" class="use-template-btn bg-indigo-600 text-white px-6 py-2 rounded-md hover:bg-indigo-700 transition duration-300 shadow-sm opacity-0 group-hover:opacity-100">Use Template</button>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300 group">
+                        <img src="img/creative-template.jpeg" alt="Creative Resume Template" class="w-full h-100 object-cover">
+                        <div class="p-6 text-center">
+                            <h3 class="text-xl font-semibold mb-2">Creative Template</h3>
+                            <p class="text-gray-600 mb-4 h-12">A bold template to showcase your creative talents.</p>
+                            <button data-template-id="creative" class="use-template-btn bg-indigo-600 text-white px-6 py-2 rounded-md hover:bg-indigo-700 transition duration-300 shadow-sm opacity-0 group-hover:opacity-100">Use Template</button>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300 group">
+                        <img src="img/professional-template.jpeg" alt="Professional Resume Template" class="w-full h-100 object-cover">
+                        <div class="p-6 text-center">
+                            <h3 class="text-xl font-semibold mb-2">Professional Template</h3>
+                            <p class="text-gray-600 mb-4 h-12">A classic and elegant design for corporate roles.</p>
+                            <button data-template-id="professional" class="use-template-btn bg-indigo-600 text-white px-6 py-2 rounded-md hover:bg-indigo-700 transition duration-300 shadow-sm opacity-0 group-hover:opacity-100">Use Template</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div id="create-resume-modal" class="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full flex items-center justify-center hidden">
+        <div class="relative mx-auto p-8 border w-96 shadow-lg rounded-md bg-white">
+            <div class="text-center">
+                <h3 class="text-2xl font-bold text-gray-900">How would you like to start?</h3>
+                <div class="mt-6 space-y-4">
+                    <button id="create-own-btn" class="w-full bg-indigo-600 text-white px-6 py-3 rounded-md hover:bg-indigo-700 transition duration-300 shadow-sm font-semibold">
+                        Create From Scratch
+                    </button>
+                    <button id="select-template-btn" class="w-full bg-gray-200 text-gray-800 px-6 py-3 rounded-md hover:bg-gray-300 transition duration-300 font-semibold">
+                        Select a Template
+                    </button>
+                </div>
+                <div class="mt-6">
+                    <button id="close-modal-btn" class="text-sm text-gray-500 hover:text-gray-700">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./js/dashboard.js"></script>
+</body>
+</html>
