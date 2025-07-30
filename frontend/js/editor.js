@@ -44,12 +44,12 @@ document.addEventListener('DOMContentLoaded', () => {
             templateHtml = templateHtml.replace(/{{FULL_NAME}}/g, details.full_name || '');
             templateHtml = templateHtml.replace(/{{EMAIL}}/g, details.email || '');
             templateHtml = templateHtml.replace(/{{PHONE}}/g, details.phone || '');
-            templateHtml = templateHtml.replace('{{PROFILE_IMAGE}}', details.profile_image || 'https://placehold.co/300x400/fce7f3/d68c7c?text=Image');
+            templateHtml = templateHtml.replace('{{PROFILE_IMAGE}}', details.profile_image || 'https://placehold.co/300x400/ccc/333?text=Image');
             templateHtml = templateHtml.replace(/{{COLLEGE}}/g, details.college || '');
             templateHtml = templateHtml.replace(/{{DEGREE}}/g, details.degree || '');
             templateHtml = templateHtml.replace(/{{PASSING_YEAR}}/g, details.passing_year || '');
             
-            // 4. Handle loops for skills and experience based on template
+            // 4. Handle loops for skills, projects, and experience based on template
             let skillsHtml = '';
             if (templateName === 'creative') {
                 skillsHtml = (details.skills || []).map(skill => `<p>${skill}</p>`).join('');
@@ -79,6 +79,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 `).join('');
             }
             templateHtml = templateHtml.replace('{{EXPERIENCE_LOOP}}', experienceHtml);
+            
+            // --- THIS IS THE FIX ---
+            const projectsHtml = (details.projects || []).map(proj => `
+                <div class="mb-4">
+                    <a href="${proj.link}" target="_blank" class="font-bold text-indigo-600 hover:underline">${proj.title}</a>
+                    <p class="text-sm text-gray-600">${proj.description}</p>
+                </div>
+            `).join('');
+            templateHtml = templateHtml.replace('{{PROJECTS_LOOP}}', projectsHtml);
 
             // 5. Load the final HTML into the editor
             editor.innerHTML = templateHtml;
@@ -111,7 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // --- Toolbar Functionality ---
+    // --- Toolbar, Save, Download, and Logout functions remain the same ---
     toolbarButtons.forEach(button => {
         button.addEventListener('click', () => {
             const command = button.getAttribute('data-command');
@@ -120,7 +129,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // --- Save/Update Resume Functionality ---
     saveButton.addEventListener('click', async () => {
         const resumeContent = editor.innerHTML;
         const resumeName = resumeNameInput.value.trim();
@@ -148,7 +156,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // --- Download Resume Functionality ---
     downloadButton.addEventListener('click', () => {
         const resumeContent = document.getElementById('resume-editor');
         const resumeName = resumeNameInput.value.trim();
@@ -166,7 +173,6 @@ document.addEventListener('DOMContentLoaded', () => {
         html2pdf().from(resumeContent).set(opt).save();
     });
 
-    // --- Logout Functionality ---
     if (logoutButton) {
         logoutButton.addEventListener('click', () => {
             localStorage.clear();
